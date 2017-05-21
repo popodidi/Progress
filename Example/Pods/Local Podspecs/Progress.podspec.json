@@ -1,0 +1,22 @@
+{
+  "name": "Progress",
+  "version": "0.1.0",
+  "summary": "A short description of Progress.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/popodidi/Progress",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "popodidi": "changhao@sendbest.cc"
+  },
+  "source": {
+    "git": "https://github.com/popodidi/Progress.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Progress/Classes/**/*"
+}

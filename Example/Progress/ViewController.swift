@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Progress
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        Progress.register(progressorView: CustomProgressorView.self, with: "custom_example")
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,5 +23,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func activityIndicatorProgress() {
+        Progress.start(in: imageView, types: .blur(type: .dark), .activityIndicator)
+    }
+    @IBAction func ringProgress() {
+        Progress.start(in: imageView, types: .blur(type: .extraLight), .ring)
+    }
+    
+    @IBAction func customProgress() {
+        Progress.start(in: imageView, types: .color(parameter: (.cyan, 0.5)), .customer(identifier: "custom_example", parameter: nil))
+    }
+    @IBAction func end() {
+        Progress.end(in: imageView)
+    }
+    @IBAction func updateProgress(_ sender: UISlider) {
+        Progress.update(sender.value, in: imageView)
+    }
 }
 

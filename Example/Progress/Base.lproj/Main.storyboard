@@ -1,25 +1,97 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Progress_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-GA-A8B">
+                                <rect key="frame" x="87.5" y="149.5" width="200" height="368"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lake-696098_1280" translatesAutoresizingMaskIntoConstraints="NO" id="HLV-ET-lhw">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="HLV-ET-lhw" secondAttribute="height" id="hKn-Ad-2Sy"/>
+                                            <constraint firstAttribute="width" constant="200" id="kCs-Fn-d6c"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Progress Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCC-Cb-ba8">
+                                        <rect key="frame" x="0.0" y="200" width="200" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-vZ-nFz">
+                                        <rect key="frame" x="0.0" y="248" width="200" height="30"/>
+                                        <state key="normal" title="blur.dark+activityIndicator"/>
+                                        <connections>
+                                            <action selector="activityIndicatorProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="D6k-ey-0re"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgF-dt-6jt">
+                                        <rect key="frame" x="0.0" y="278" width="200" height="30"/>
+                                        <state key="normal" title="blur.extraLight+ring"/>
+                                        <connections>
+                                            <action selector="ringProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j9P-eJ-VN3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-yF-RMK">
+                                        <rect key="frame" x="0.0" y="308" width="200" height="30"/>
+                                        <state key="normal" title="color+custom"/>
+                                        <connections>
+                                            <action selector="customProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bvo-ar-m7I"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fw-dw-UAx">
+                                        <rect key="frame" x="0.0" y="338" width="200" height="30"/>
+                                        <state key="normal" title="end"/>
+                                        <connections>
+                                            <action selector="end" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z8j-kq-SUj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6ac-AL-JRh">
+                                <rect key="frame" x="28" y="617" width="319" height="31"/>
+                                <connections>
+                                    <action selector="updateProgress:" destination="vXZ-lx-hvc" eventType="valueChanged" id="nht-tf-DoT"/>
+                                </connections>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AoE-GA-A8B" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="AjT-rq-eao"/>
+                            <constraint firstItem="6ac-AL-JRh" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="MgY-to-H09"/>
+                            <constraint firstItem="AoE-GA-A8B" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="e36-94-p5r"/>
+                            <constraint firstItem="6ac-AL-JRh" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" constant="-60" id="h5j-oR-VBE"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6ac-AL-JRh" secondAttribute="bottom" constant="20" id="yVo-Ma-q24"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="HLV-ET-lhw" id="bWN-NP-Hhu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="lake-696098_1280" width="1280" height="850"/>
+    </resources>
 </document>

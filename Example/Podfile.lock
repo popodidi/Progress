@@ -1,0 +1,22 @@
+PODS:
+  - Nimble (5.1.1)
+  - Progress (0.1.0)
+  - Quick (1.0.0)
+
+DEPENDENCIES:
+  - Nimble (~> 5.1.1)
+  - Progress (from `../`)
+  - Quick (~> 1.0.0)
+
+EXTERNAL SOURCES:
+  Progress:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
+  Progress: 75f92fd49862dda1e015ea39ecceda5ded5410de
+  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+
+PODFILE CHECKSUM: 29c88d576dedd1e43192e6aa7289aace52b3c4ee
+
+COCOAPODS: 1.2.1
