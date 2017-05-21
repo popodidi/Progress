@@ -34,12 +34,12 @@ public final class Progress {
         return shared.progressorViews[index]
     }
     
-    public static func register(progressorView progressorViewType: ProgressorView.Type, with identifier: String) {
+    public static func register(progressorView progressorViewType: ProgressorView.Type, withIdentifier identifier: String) {
         shared.customeProgressorViewTypes[identifier] = progressorViewType
     }
     
     // MARK: - START
-    public static func start(in parent: ProgressParent, types: ProgressorType..., completion: @escaping (()->Void) = {}) {
+    public static func start(in parent: ProgressParent, _ types: ProgressorType..., completion: @escaping (()->Void) = {}) {
         guard !shared.progressParents.contains(where: { $0 === parent}) else {
             print("\(parent) is already in progress")
             return
@@ -102,11 +102,12 @@ public final class Progress {
     
     static func recursiveEnd(in parent: ProgressParent, remainingProgressorViews: [ProgressorView], completion: @escaping (()->Void)) {
         if let progressorView = remainingProgressorViews.first {
-            progressorView.endProgress()
-            parent.remove(progressorView: progressorView) {
-                var remain = remainingProgressorViews
-                remain.remove(at: 0)
-                Progress.recursiveEnd(in: parent, remainingProgressorViews: remain, completion: completion)
+            progressorView.endProgress() {
+                parent.remove(progressorView: progressorView) {
+                    var remain = remainingProgressorViews
+                    remain.remove(at: 0)
+                    Progress.recursiveEnd(in: parent, remainingProgressorViews: remain, completion: completion)
+                }
             }
         } else {
             completion()

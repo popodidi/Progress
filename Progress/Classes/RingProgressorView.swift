@@ -94,13 +94,14 @@ class RingProgressorView: ProgressorView {
     override func prepareForProgress(parameter: Any? = nil) {
         backgroundColor = .clear
     }
-    override func startProgress(parameter: Any? = nil, completion: (() -> Void)) {
+    override func startProgress(parameter: Any? = nil, completion: @escaping (() -> Void)) {
         startAnimation()
         completion()
     }
     override func update(progress: Float) {
         self.progress = CGFloat(progress)
     }
-    override func endProgress() {
-    }
+//    override func endProgress(completion: @escaping (() -> Void)) {
+//        completion()
+//    }
 }

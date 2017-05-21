@@ -12,7 +12,7 @@ extension Progress {
     // MARK: - private func
     internal func progressView(with type: ProgressorType) -> ProgressorView {
         switch type {
-        case .customer(let (identifier, _)): return customProgressorView(with: identifier)
+        case .custom(let (identifier, _)): return customProgressorView(with: identifier)
         default: return builtInProgressorView(with: type.identifier)
         }
     }

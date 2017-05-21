@@ -21,7 +21,7 @@ class CustomProgressorView: ProgressorView {
         addSubview(label)
         label.text = "loading..."
     }
-    override func startProgress(parameter: Any?, completion: (() -> Void)) {
+    override func startProgress(parameter: Any?, completion: @escaping (() -> Void)) {
         completion()
     }
     override func update(progress: Float) {
@@ -29,6 +29,13 @@ class CustomProgressorView: ProgressorView {
         label.text = "loading \(percent)% ..."
         setNeedsLayout()
     }
-    override func endProgress() {
+    
+    override func endProgress(completion: @escaping (() -> Void)) {
+        UIView.animate(withDuration: 1, animations: {
+            self.label.text = "DONE!"
+            self.label.transform = self.label.transform.scaledBy(x: 3, y: 3)
+        }) { _ in
+            completion()
+        }
     }
 }

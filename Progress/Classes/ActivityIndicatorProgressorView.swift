@@ -20,12 +20,13 @@ class ActivityIndicatorProgressorView: ProgressorView {
         indicatorView.startAnimating()
     }
     
-    override func startProgress(parameter: Any? = nil, completion: (() -> Void)) {
+    override func startProgress(parameter: Any? = nil, completion: @escaping (() -> Void)) {
         completion()
     }
     override func update(progress: Float) {
     }
-    override func endProgress() {
+    override func endProgress(completion: @escaping (() -> Void)) {
 //        indicatorView.stopAnimating()
+        completion()
     }
 }

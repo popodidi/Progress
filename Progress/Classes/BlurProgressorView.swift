@@ -21,11 +21,12 @@ class BlurProgressorView: ProgressorView {
         addSubview(blurEffectView)
     }
     
-    override func startProgress(parameter: Any? = nil, completion: (() -> Void)) {
-        completion()
-    }
-    override func update(progress: Float) {
-    }
-    override func endProgress() {
-    }
+//    override func startProgress(parameter: Any? = nil, completion: @escaping (() -> Void)) {
+//        completion()
+//    }
+//    override func update(progress: Float) {
+//    }
+//    override func endProgress(completion: @escaping (() -> Void)) {
+//        completion()
+//    }
 }
