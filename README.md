@@ -21,17 +21,17 @@ pod "Progress"
 ```
 
 ## Screenshot
+![](Progress_demo.gif)
 
-
-## built-in progressors
+## Basic usage
 
 ```swift
 
 // start progress
-Progress.start(in: imageView, .blur(style: .dark), .activityIndicator)
+Progress.start(in: imageView, .blur(.dark), .activityIndicator)
 
 // start progress with call back after animation
-Progress.start(in: imageView, .blur(style: .dark), .activityIndicator) {
+Progress.start(in: imageView, .blur(.dark), .activityIndicator) {
 	// do something....
 }
 
@@ -48,17 +48,26 @@ Progress.end(in: imageView) {
 
 ```
 
-### built-in progressor types
+### Built-in progressor types
 
-- `.color(parameter: ColorProgressorParameter)`
-- `.blur(style: UIBlurEffectStyle)`
+- `.color(ColorProgressorParameter?)`
+- `.blur(BlurProgressorParameter?)`
 - `.activityIndicator`
-- `.ring`
+- `.ring(RingProgressorParameter?)`
 
+As you see, progress can start with multiple progressors in one parent. The progressors will be added and start animation one by one. When ending the progress, the progressors will end animation and be removed reversely.
 
-## custom progressor
+## Advanced usage
 
-### create custom progressor view
+### `ProgressParent`
+
+Classes that implement `ProgressParent` protocol are able to add/remove `ProgressView`. `UIView` and `UIViewController` conform `ProgressParent` by default.
+
+The default implementation of `UIView` is to add `progressView` as subview with 0.2 second fade-in animation. `UIViewController` simply calls `self.view` implementations.
+
+### Custom progressor
+
+#### create custom progressor view
 
 ```swift
 import Progress
@@ -95,29 +104,33 @@ class CustomProgressorView: ProgressorView {
             self.label.text = "DONE!"
             self.label.transform = self.label.transform.scaledBy(x: 3, y: 3)
         }) { _ in
-            // always call completion at the end of starting progress
+            // always call completion at the end of ending progress
             completion()
         }
     }
 }
 ```
 
-### register custom progressor view
+#### register custom progressor view
 
 ``` swift
 Progress.register(progressorView: CustomProgressorView.self, withIdentifier: "custom_example")
 ```
 
-### use as built-in ones
+#### use as built-in ones
 
 ``` swift
 Progress.start(in: imageView, .customer(identifier: "custom_example", parameter: nil))
 ```
+The `parameter: Any?` here will be passed in to 
+
+- `progressorView.prepareForProgress(parameter: Any?)`
+- `progressorView.startProgress(parameter: Any?, completion: @escaping (() -> Void))`
 
 
 ## Author
 
-[Hao](changhao@haostudio.cc)
+[popodidi](changhao@haostudio.cc)
 
 ## License
 

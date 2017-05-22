@@ -8,25 +8,24 @@
 
 import UIKit
 
+public typealias BlurProgressorParameter = UIBlurEffectStyle
+
 class BlurProgressorView: ProgressorView {
     override func prepareForProgress(parameter: Any? = nil) {
-        guard let style = parameter as? UIBlurEffectStyle else {
+        
+        var style: BlurProgressorParameter = .light
+        
+        if let s = parameter as? BlurProgressorParameter {
+            style = s
+        } else {
             print("invalid blur style specified. \(parameter)")
-            return
+            print("using .light as default.")
         }
+        
         let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(blurEffectView)
     }
-    
-//    override func startProgress(parameter: Any? = nil, completion: @escaping (() -> Void)) {
-//        completion()
-//    }
-//    override func update(progress: Float) {
-//    }
-//    override func endProgress(completion: @escaping (() -> Void)) {
-//        completion()
-//    }
 }

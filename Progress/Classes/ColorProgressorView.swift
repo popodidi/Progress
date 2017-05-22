@@ -8,15 +8,19 @@
 
 import UIKit
 
-public typealias ColorProgressorParameter = (color: UIColor, alpha: CGFloat)
+public typealias ColorProgressorParameter = UIColor
 
 class ColorProgressorView: ProgressorView {
     override func prepareForProgress(parameter: Any? = nil) {
-        guard let p = parameter as? ColorProgressorParameter else {
+        
+        var param: ColorProgressorParameter = UIColor.white.withAlphaComponent(0.5)
+        if let p = parameter as? ColorProgressorParameter {
+            param = p
+        } else {
             print("invalid color progressor parameter. \(String(describing: parameter))")
-            return
+            print("using default parameter instead. \(param)")
         }
-        backgroundColor = p.color.withAlphaComponent(p.alpha)
+        backgroundColor = param
     }
     
     /*

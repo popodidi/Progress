@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qqw-bd-0mq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,45 +22,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-GA-A8B">
-                                <rect key="frame" x="87.5" y="149.5" width="200" height="368"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-GA-A8B">
+                                <rect key="frame" x="32" y="133.5" width="311" height="400.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lake-696098_1280" translatesAutoresizingMaskIntoConstraints="NO" id="HLV-ET-lhw">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hJa-tv-Bto">
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="147.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lake-696098_1280" translatesAutoresizingMaskIntoConstraints="NO" id="HLV-ET-lhw">
+                                                <rect key="frame" x="0.0" y="0.0" width="147.5" height="147.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="HLV-ET-lhw" secondAttribute="height" id="hKn-Ad-2Sy"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="prairie-679016_1280" translatesAutoresizingMaskIntoConstraints="NO" id="fkF-Eo-I4g">
+                                                <rect key="frame" x="163.5" y="0.0" width="147.5" height="147.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="fkF-Eo-I4g" secondAttribute="height" id="xsq-HD-rbQ"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="HLV-ET-lhw" secondAttribute="height" id="hKn-Ad-2Sy"/>
-                                            <constraint firstAttribute="width" constant="200" id="kCs-Fn-d6c"/>
+                                            <constraint firstItem="fkF-Eo-I4g" firstAttribute="width" secondItem="HLV-ET-lhw" secondAttribute="width" id="qAg-ra-8PP"/>
                                         </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Progress Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCC-Cb-ba8">
-                                        <rect key="frame" x="0.0" y="200" width="200" height="48"/>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Progress Demo " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCC-Cb-ba8">
+                                        <rect key="frame" x="87" y="147.5" width="137.5" height="72"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MVb-Mf-3P7">
+                                        <rect key="frame" x="131" y="219.5" width="51" height="31"/>
+                                    </switch>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-vZ-nFz">
-                                        <rect key="frame" x="0.0" y="248" width="200" height="30"/>
+                                        <rect key="frame" x="66" y="250.5" width="179" height="30"/>
                                         <state key="normal" title="blur.dark+activityIndicator"/>
                                         <connections>
                                             <action selector="activityIndicatorProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="D6k-ey-0re"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgF-dt-6jt">
-                                        <rect key="frame" x="0.0" y="278" width="200" height="30"/>
-                                        <state key="normal" title="blur.extraLight+ring"/>
+                                        <rect key="frame" x="44" y="280.5" width="223" height="30"/>
+                                        <state key="normal" title="blur.extraLight+ring.proportional"/>
                                         <connections>
                                             <action selector="ringProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j9P-eJ-VN3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-yF-RMK">
-                                        <rect key="frame" x="0.0" y="308" width="200" height="30"/>
+                                        <rect key="frame" x="108" y="310.5" width="95" height="30"/>
                                         <state key="normal" title="color+custom"/>
                                         <connections>
                                             <action selector="customProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bvo-ar-m7I"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPT-Aa-Rdh">
+                                        <rect key="frame" x="62" y="340.5" width="187" height="30"/>
+                                        <state key="normal" title="color+ring.endless+custom"/>
+                                        <connections>
+                                            <action selector="ringAndCustomProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CgJ-ja-sFg"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fw-dw-UAx">
-                                        <rect key="frame" x="0.0" y="338" width="200" height="30"/>
+                                        <rect key="frame" x="140.5" y="370.5" width="30" height="30"/>
                                         <state key="normal" title="end"/>
                                         <connections>
                                             <action selector="end" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z8j-kq-SUj"/>
@@ -76,6 +100,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="HLV-ET-lhw" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.5" constant="-40" id="AB4-92-agP"/>
                             <constraint firstItem="AoE-GA-A8B" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="AjT-rq-eao"/>
                             <constraint firstItem="6ac-AL-JRh" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="MgY-to-H09"/>
                             <constraint firstItem="AoE-GA-A8B" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="e36-94-p5r"/>
@@ -83,15 +108,50 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6ac-AL-JRh" secondAttribute="bottom" constant="20" id="yVo-Ma-q24"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="IjX-M4-y0f">
+                        <nil key="title"/>
+                        <switch key="titleView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="nz7-C1-K3M">
+                            <rect key="frame" x="162" y="6.5" width="51" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </switch>
+                        <barButtonItem key="rightBarButtonItem" title="end" id="NPJ-m5-n0O">
+                            <connections>
+                                <action selector="end" destination="vXZ-lx-hvc" id="XKn-Dm-umc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="HLV-ET-lhw" id="bWN-NP-Hhu"/>
+                        <outlet property="imageSwitch" destination="MVb-Mf-3P7" id="O4Z-Nb-CET"/>
+                        <outlet property="imageView_1" destination="HLV-ET-lhw" id="42e-5c-Tlf"/>
+                        <outlet property="imageView_2" destination="fkF-Eo-I4g" id="jb9-sc-6BI"/>
+                        <outlet property="vcSwitch" destination="nz7-C1-K3M" id="skn-jD-Atj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="972" y="37.331334332833585"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jge-wH-hKA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qqw-bd-0mq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4H1-dY-r4o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Iiw-ED-A0e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="faC-qZ-pVH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="37"/>
         </scene>
     </scenes>
     <resources>
         <image name="lake-696098_1280" width="1280" height="850"/>
+        <image name="prairie-679016_1280" width="1280" height="835"/>
     </resources>
 </document>

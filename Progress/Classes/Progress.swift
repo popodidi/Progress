@@ -24,21 +24,44 @@ public final class Progress {
     var customeProgressorViewTypes: [String: ProgressorView.Type] = [:]
     
     // MARK: - Data
-    public static func `is`(in item: ProgressParent) -> Bool {
-        return shared.progressParents.contains { $0 === item }
+    /**
+     Check if the item is currently in progress
+     
+     - parameter parent: ProgressParent
+     */
+    public static func `is`(in parent: ProgressParent) -> Bool {
+        return shared.progressParents.contains { $0 === parent }
     }
     
+    /**
+     Get all the progressor views in parent
+     
+     - parameter parent: ProgressParent
+     */
     public static func progressorViews(of parent: ProgressParent) -> [ProgressorView] {
         guard let index = shared.progressParents.index(where: {$0 === parent}),
             index < shared.progressorViews.count else { return [] }
         return shared.progressorViews[index]
     }
     
+    /**
+     Register custom progressor view with identifier
+     
+     - parameter progressorViewType: progressor view type
+     - parameter identifier: unique identifier for each progressor type
+     */
     public static func register(progressorView progressorViewType: ProgressorView.Type, withIdentifier identifier: String) {
         shared.customeProgressorViewTypes[identifier] = progressorViewType
     }
     
     // MARK: - START
+    /**
+     Start progress in progress parent
+     
+     - parameter parent: progress parent to start progress in
+     - parameter types: arbitrary number of progressor types
+     - parameter completion: callback function after all the starting animation
+     */
     public static func start(in parent: ProgressParent, _ types: ProgressorType..., completion: @escaping (()->Void) = {}) {
         guard !shared.progressParents.contains(where: { $0 === parent}) else {
             print("\(parent) is already in progress")
@@ -78,6 +101,12 @@ public final class Progress {
     }
     
     // MARK: - UPDATE
+    /**
+     Update progress in progress parent
+     
+     - parameter progress: completion percentage (suggested to be ranging from 0 to 1)
+     - parameter parent: progress parent to update progress
+     */
     public static func update(_ progress: Float, in parent: ProgressParent) {
         guard shared.progressParents.contains(where: { $0 === parent}) else {
             print("\(parent) is not in progress, use Progress.start(in:type:) instead.")
@@ -90,6 +119,12 @@ public final class Progress {
     }
     
     // MARK: - END
+    /**
+     End progress in progress parent
+     
+     - parameter parent: progress parent to end progress
+     - parameter completion: callback function after all the ending animation
+     */
     public static func end(in parent: ProgressParent, completion: @escaping (()->Void) = {}) {
         recursiveEnd(in: parent, remainingProgressorViews: progressorViews(of: parent).reversed()) { 
             if let index = shared.progressParents.index(where: { $0 === parent}) {

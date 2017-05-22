@@ -10,10 +10,10 @@ import Foundation
 
 public enum ProgressorType {
     case
-    color(parameter: ColorProgressorParameter),
-    blur(style: UIBlurEffectStyle),
+    color(ColorProgressorParameter?),
+    blur(BlurProgressorParameter?),
     activityIndicator,
-    ring,
+    ring(RingProgressorParameter?),
     custom(identifier: String, parameter: Any?)
     
     var identifier: String {
@@ -29,7 +29,8 @@ public enum ProgressorType {
     var parameter: Any? {
         switch self {
         case .color(let param): return param
-        case .blur(let style): return style
+        case .blur(let param): return param
+        case .ring(let param): return param
         case .custom(let (_, param)): return param
         default: return nil
         }
