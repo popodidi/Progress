@@ -57,7 +57,7 @@ Prog.end(in: imageView) {
 
 As you see, progress can start with multiple progressors in one parent. The progressors will be added and start animation one by one. When ending the progress, the progressors will end animation and be removed reversely.
 
-> - Since `Progress` holds strong reference to all the `ProgressParent` and `ProgressView`, **Always call `Progress.end(in:)` at the end of progress**.
+> - Since `Prog` holds strong reference to all the `ProgressParent` and `ProgressView`, **Always call `Prog.end(in:)` at the end of progress**.
 > - Make sure to `update`/`end` progress after all the animation is done.
 > 
 > ```swift
@@ -125,7 +125,7 @@ class CustomProgressorView: ProgressorView {
 #### register custom progressor view
 
 ``` swift
-Progress.register(progressorView: CustomProgressorView.self, withIdentifier: "custom_example")
+Prog.register(progressorView: CustomProgressorView.self, withIdentifier: "custom_example")
 ```
 
 #### use as built-in ones
