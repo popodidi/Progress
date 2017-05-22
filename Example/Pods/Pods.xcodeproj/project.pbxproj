@@ -53,13 +53,13 @@
 		76036D32625A56D480D84AA46961EF91 /* Nimble-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BCBDD456B535FEADB8D72DB83652D74D /* Nimble-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78F3DE174B4F8D368EF8EEFD7EE62087 /* BeVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C64DCE9D714CA88C06BDCC413FD3661 /* BeVoid.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		7922EAA3657776762C91F022CCD97749 /* HooksPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE05FF5E6FC72D2287373D241DFBB6F2 /* HooksPhase.swift */; };
-		7A81CBE41ECF3333007DD76E /* Progress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81CBE31ECF3333007DD76E /* Progress.swift */; };
+		7A81CBE41ECF3333007DD76E /* Prog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81CBE31ECF3333007DD76E /* Prog.swift */; };
 		7A81CBE61ECF333D007DD76E /* ProgressParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81CBE51ECF333D007DD76E /* ProgressParent.swift */; };
 		7A81CBE81ECF3346007DD76E /* ProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81CBE71ECF3346007DD76E /* ProgressorView.swift */; };
 		7A81CBEB1ED030C4007DD76E /* UIView+ProgressParents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81CBEA1ED030C4007DD76E /* UIView+ProgressParents.swift */; };
 		7A81CBEE1ED033AC007DD76E /* BlurProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A81CBED1ED033AC007DD76E /* BlurProgressorView.swift */; };
 		7ABCF5501ED1433D005FAFC9 /* ActivityIndicatorProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF54E1ED1430F005FAFC9 /* ActivityIndicatorProgressorView.swift */; };
-		7ABCF5521ED148D7005FAFC9 /* Progress+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF5511ED148D7005FAFC9 /* Progress+Internal.swift */; };
+		7ABCF5521ED148D7005FAFC9 /* Prog+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF5511ED148D7005FAFC9 /* Prog+Internal.swift */; };
 		7ABCF5541ED1491F005FAFC9 /* ProgressorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF5531ED1491F005FAFC9 /* ProgressorType.swift */; };
 		7ABCF5561ED14BDB005FAFC9 /* RingProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF5551ED14BDB005FAFC9 /* RingProgressorView.swift */; };
 		7ABCF55A1ED1B1E5005FAFC9 /* ColorProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF5591ED1B1E5005FAFC9 /* ColorProgressorView.swift */; };
@@ -216,7 +216,7 @@
 		71937B4B91A62971088D88CADF9D17CC /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
 		72B50685A7115CB568F2F23A42E31BEA /* NMBExceptionCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBExceptionCapture.h; path = Sources/NimbleObjectiveC/NMBExceptionCapture.h; sourceTree = "<group>"; };
 		76C2AD2F63645F36689BC3DF18067258 /* QuickTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestSuite.swift; path = Sources/Quick/QuickTestSuite.swift; sourceTree = "<group>"; };
-		7A81CBE31ECF3333007DD76E /* Progress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progress.swift; sourceTree = "<group>"; };
+		7A81CBE31ECF3333007DD76E /* Prog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prog.swift; sourceTree = "<group>"; };
 		7A81CBE51ECF333D007DD76E /* ProgressParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressParent.swift; sourceTree = "<group>"; };
 		7A81CBE71ECF3346007DD76E /* ProgressorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressorView.swift; sourceTree = "<group>"; };
 		7A81CBEA1ED030C4007DD76E /* UIView+ProgressParents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ProgressParents.swift"; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		7A95C6883F5AC495C49DF6050AFA408C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7AA367A34E0B8C1B01749CCC12FD43C5 /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		7ABCF54E1ED1430F005FAFC9 /* ActivityIndicatorProgressorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorProgressorView.swift; sourceTree = "<group>"; };
-		7ABCF5511ED148D7005FAFC9 /* Progress+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Progress+Internal.swift"; sourceTree = "<group>"; };
+		7ABCF5511ED148D7005FAFC9 /* Prog+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prog+Internal.swift"; sourceTree = "<group>"; };
 		7ABCF5531ED1491F005FAFC9 /* ProgressorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressorType.swift; sourceTree = "<group>"; };
 		7ABCF5551ED14BDB005FAFC9 /* RingProgressorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingProgressorView.swift; sourceTree = "<group>"; };
 		7ABCF5591ED1B1E5005FAFC9 /* ColorProgressorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorProgressorView.swift; sourceTree = "<group>"; };
@@ -578,8 +578,8 @@
 				7A81CBEC1ED03383007DD76E /* ProgressorViews */,
 				7A81CBE91ED030A4007DD76E /* ProgressParents */,
 				7ABCF5531ED1491F005FAFC9 /* ProgressorType.swift */,
-				7A81CBE31ECF3333007DD76E /* Progress.swift */,
-				7ABCF5511ED148D7005FAFC9 /* Progress+Internal.swift */,
+				7A81CBE31ECF3333007DD76E /* Prog.swift */,
+				7ABCF5511ED148D7005FAFC9 /* Prog+Internal.swift */,
 				7A81CBE51ECF333D007DD76E /* ProgressParent.swift */,
 				7A81CBE71ECF3346007DD76E /* ProgressorView.swift */,
 			);
@@ -913,7 +913,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A81CBE41ECF3333007DD76E /* Progress.swift in Sources */,
+				7A81CBE41ECF3333007DD76E /* Prog.swift in Sources */,
 				7ABCF55A1ED1B1E5005FAFC9 /* ColorProgressorView.swift in Sources */,
 				7A81CBEE1ED033AC007DD76E /* BlurProgressorView.swift in Sources */,
 				7A81CBE81ECF3346007DD76E /* ProgressorView.swift in Sources */,
@@ -923,7 +923,7 @@
 				7ABCF5541ED1491F005FAFC9 /* ProgressorType.swift in Sources */,
 				FFF7FF812A93AE949B19597FA1F0CD18 /* Progress-dummy.m in Sources */,
 				7ABCF5561ED14BDB005FAFC9 /* RingProgressorView.swift in Sources */,
-				7ABCF5521ED148D7005FAFC9 /* Progress+Internal.swift in Sources */,
+				7ABCF5521ED148D7005FAFC9 /* Prog+Internal.swift in Sources */,
 				7ABCF55C1ED26168005FAFC9 /* UIViewController+ProgressParents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

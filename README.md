@@ -28,21 +28,21 @@ pod "Progress"
 ```swift
 
 // start progress
-Progress.start(in: imageView, .blur(.dark), .activityIndicator)
+Prog.start(in: imageView, .blur(.dark), .activityIndicator)
 
 // start progress with call back after animation
-Progress.start(in: imageView, .blur(.dark), .activityIndicator) {
+Prog.start(in: imageView, .blur(.dark), .activityIndicator) {
 	// do something....
 }
 
 // update completion ratio
-Progress.update(0.87, in: imageView)
+Prog.update(0.87, in: imageView)
 
 // end progress
-Progress.end(in: imageView)
+Prog.end(in: imageView)
 
 // end progress with call back after animation
-Progress.end(in: imageView) {
+Prog.end(in: imageView) {
 	// do something....
 }
 
@@ -61,10 +61,10 @@ As you see, progress can start with multiple progressors in one parent. The prog
 > - Make sure to `update`/`end` progress after all the animation is done.
 > 
 > ```swift
-> Progress.start(in: view, .blur(nil)) {
+> Prog.start(in: view, .blur(nil)) {
 >   // do something
 >   // ...
->   Progess.end(in: self.view)
+>   Prog.end(in: self.view)
 > }
 > ```
 
@@ -131,7 +131,7 @@ Progress.register(progressorView: CustomProgressorView.self, withIdentifier: "cu
 #### use as built-in ones
 
 ``` swift
-Progress.start(in: imageView, .customer(identifier: "custom_example", parameter: nil))
+Prog.start(in: imageView, .customer(identifier: "custom_example", parameter: nil))
 ```
 The `parameter: Any?` here will be passed in to 
 

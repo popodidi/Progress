@@ -8,8 +8,12 @@
 
 import Foundation
 
-public final class Progress {
-    static var shared: Progress = Progress()
+/**
+ Main API class. 
+ Prog stands for Progress in order to avoid having the same class name as Foundation.Progress
+ */
+public final class Prog {
+    static var shared: Prog = Prog()
     private init() {}
     internal var progressParents: [ProgressParent] = []
     internal var progressorViews: [[ProgressorView]] = []
@@ -77,10 +81,10 @@ public final class Progress {
     
     static func recursiveStart(in parent: ProgressParent, remainingTypes: [ProgressorType], completion: @escaping (()->Void)) {
         if let type = remainingTypes.first {
-            Progress.start(in: parent, type: type) {
+            start(in: parent, type: type) {
                 var remain = remainingTypes
                 remain.remove(at: 0)
-                Progress.recursiveStart(in: parent, remainingTypes: remain, completion: completion)
+                recursiveStart(in: parent, remainingTypes: remain, completion: completion)
             }
         } else {
             completion()
@@ -141,7 +145,7 @@ public final class Progress {
                 parent.remove(progressorView: progressorView) {
                     var remain = remainingProgressorViews
                     remain.remove(at: 0)
-                    Progress.recursiveEnd(in: parent, remainingProgressorViews: remain, completion: completion)
+                    recursiveEnd(in: parent, remainingProgressorViews: remain, completion: completion)
                 }
             }
         } else {

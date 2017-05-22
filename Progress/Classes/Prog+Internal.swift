@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Progress {
+extension Prog {
     // MARK: - private func
     internal func progressView(with type: ProgressorType) -> ProgressorView {
         switch type {

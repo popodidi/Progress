@@ -27,29 +27,29 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Progress.register(progressorView: CustomProgressorView.self, withIdentifier: "custom_example")
+        Prog.register(progressorView: CustomProgressorView.self, withIdentifier: "custom_example")
     }
 
 
     @IBAction func activityIndicatorProgress() {
-        Progress.start(in: progressParent, .blur(.dark), .activityIndicator)
+        Prog.start(in: progressParent, .blur(.dark), .activityIndicator)
     }
     @IBAction func ringProgress() {
-        Progress.start(in: progressParent, .blur(.extraLight), .ring(nil))
+        Prog.start(in: progressParent, .blur(.extraLight), .ring(nil))
     }
     @IBAction func customProgress() {
-        Progress.start(in: progressParent, .color(UIColor.cyan.withAlphaComponent(0.5)), .custom(identifier: "custom_example", parameter: nil))
+        Prog.start(in: progressParent, .color(UIColor.cyan.withAlphaComponent(0.5)), .custom(identifier: "custom_example", parameter: nil))
     }
     @IBAction func ringAndCustomProgress() {
         let ringParam: RingProgressorParameter = (.endless, UIColor.brown.withAlphaComponent(0.5), 20, 5)
-        Progress.start(in: progressParent, .color(nil), .ring(ringParam), .custom(identifier: "custom_example", parameter: nil))
+        Prog.start(in: progressParent, .color(nil), .ring(ringParam), .custom(identifier: "custom_example", parameter: nil))
     }
     @IBAction func end() {
-        Progress.end(in: progressParent)
+        Prog.end(in: progressParent)
     }
     
     @IBAction func updateProgress(_ sender: UISlider) {
-        Progress.update(sender.value, in: progressParent)
+        Prog.update(sender.value, in: progressParent)
     }
 }
 
