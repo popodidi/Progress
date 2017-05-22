@@ -18,7 +18,7 @@ class BlurProgressorView: ProgressorView {
         if let s = parameter as? BlurProgressorParameter {
             style = s
         } else {
-            print("invalid blur style specified. \(parameter)")
+            print("invalid blur style specified. \(String(describing: parameter))")
             print("using .light as default.")
         }
         
