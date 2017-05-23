@@ -68,6 +68,17 @@ public final class Prog {
      - parameter completion: callback function after all the starting animation
      */
     public static func start(in parent: ProgressParent, _ types: ProgressorType..., completion: @escaping (()->Void) = {}) {
+        start(in: parent, types: types, completion: completion)
+    }
+    
+    /**
+     Start progress in progress parent
+     
+     - parameter parent: progress parent to start progress in
+     - parameter types: arbitrary number of progressor types
+     - parameter completion: callback function after all the starting animation
+     */
+    public static func start(in parent: ProgressParent, types: [ProgressorType], completion: @escaping (()->Void) = {}) {
         guard !shared.progressParents.contains(where: { $0 === parent}) else {
             print("\(parent) is already in progress")
             return
@@ -75,7 +86,7 @@ public final class Prog {
         shared.progressParents.append(parent)
         shared.progressorViews.append([])
         
-        recursiveStart(in: parent, remainingTypes: types) { 
+        recursiveStart(in: parent, remainingTypes: types) {
             completion()
         }
     }
