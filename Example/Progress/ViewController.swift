@@ -44,6 +44,10 @@ class ViewController: UIViewController {
         let ringParam: RingProgressorParameter = (.endless, UIColor.brown.withAlphaComponent(0.5), 20, 5)
         Prog.start(in: progressParent, .color(nil), .ring(ringParam), .custom(identifier: "custom_example", parameter: nil))
     }
+    @IBAction func barProgress() {
+        let barParam: BarProgressorParameter = (.endless, .bottom, UIColor.red.withAlphaComponent(0.5), 4)
+        Prog.start(in: progressParent, .blur(nil), .bar(barParam))
+    }
     @IBAction func end() {
         Prog.end(in: progressParent)
     }

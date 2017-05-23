@@ -13,6 +13,7 @@ public enum ProgressorType {
     color(ColorProgressorParameter?),
     blur(BlurProgressorParameter?),
     activityIndicator,
+    bar(BarProgressorParameter?),
     ring(RingProgressorParameter?),
     custom(identifier: String, parameter: Any?)
     
@@ -21,6 +22,7 @@ public enum ProgressorType {
         case .color: return "color"
         case .blur: return "blur"
         case .activityIndicator: return "activityIndicator"
+        case .bar: return "bar"
         case .ring: return "ring"
         case .custom(let (id, _)): return id
         }
@@ -30,6 +32,7 @@ public enum ProgressorType {
         switch self {
         case .color(let param): return param
         case .blur(let param): return param
+        case .bar(let param): return param
         case .ring(let param): return param
         case .custom(let (_, param)): return param
         default: return nil

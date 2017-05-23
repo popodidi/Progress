@@ -7,6 +7,8 @@
 [![License](https://img.shields.io/cocoapods/l/Progress.svg?style=flat)](http://cocoapods.org/pods/Progress)
 [![Platform](https://img.shields.io/cocoapods/p/Progress.svg?style=flat)](http://cocoapods.org/pods/Progress)
 
+Apart from using any kind of ProgresHUDs, which capture the whole screen and lock the user interaction, Progress provides a more precise and elegant progress indicator. Progress allows you to add any number/kind of progressor view into each view with only one line of code. The progressor views can be an arbitrary combination of built-in/custom ones. Progress helps you provide a fluent user experience in your iOS application.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -53,6 +55,7 @@ Prog.end(in: imageView) {
 - `.color(ColorProgressorParameter?)`
 - `.blur(BlurProgressorParameter?)`
 - `.activityIndicator`
+- `.bar(BarProgressorParameter?)`
 - `.ring(RingProgressorParameter?)`
 
 As you see, progress can start with multiple progressors in one parent. The progressors will be added and start animation one by one. When ending the progress, the progressors will end animation and be removed reversely.
