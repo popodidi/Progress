@@ -13,10 +13,14 @@ import Foundation
  Prog stands for Progress in order to avoid having the same class name as Foundation.Progress
  */
 public final class Prog {
-    static var shared: Prog = Prog()
+    // MARK: - singleton
+    internal static var shared: Prog = Prog()
     private init() {}
+    
+    // MARK: - internal var
     internal var progressParents: [ProgressParent] = []
     internal var progressors: [[Progressor]] = []
+    internal var maxEndingAnimationDuration: TimeInterval = 0.4
     
     // MARK: - Progressors
     var builtInProgressorTypes: [String: Progressor.Type] = [
@@ -30,7 +34,13 @@ public final class Prog {
     ]
     var customeProgressorTypes: [String: Progressor.Type] = [:]
     
-    // MARK: - Data
+    // MARK: - Configuration
+    public static var maxEndingAnimationDuration: TimeInterval {
+        set { shared.maxEndingAnimationDuration = newValue }
+        get { return shared.maxEndingAnimationDuration }
+    }
+    
+    // MARK: - Data func
     /**
      Check if the item is currently in progress
      

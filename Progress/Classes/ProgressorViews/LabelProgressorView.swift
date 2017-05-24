@@ -14,6 +14,14 @@ public let DefaultLabelProgressorParameter: LabelProgressorParameter = (UIFont.s
 
 class LabelProgressorView: ProgressorView {
     lazy var label: UILabel = UILabel()
+    var progress: Float = 0 {
+        didSet {
+            let percent = Int(floor(progress*100))
+            label.text = "\(percent)%"
+            setNeedsLayout()
+        }
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         label.sizeToFit()
@@ -36,12 +44,28 @@ class LabelProgressorView: ProgressorView {
     }
     
     override func update(progress: Float) {
-        let percent = Int(floor(progress*100))
-        label.text = "\(percent)%"
-        setNeedsLayout()
+        self.progress = progress
     }
     
     override func endProgress(completion: @escaping (() -> Void)) {
-        completion()
+        animate(from: progress, to: 1, completion: completion)
     }
+    
+    private func animate(from: Float, to: Float, completion: @escaping ()->Void) {
+        progress = from
+        recursiveUpdate(to: to, completion: completion)
+    }
+    
+    private func recursiveUpdate(to target: Float, completion: @escaping ()->Void) {
+        if progress <= target {
+            progress = progress + 0.01
+            let when = DispatchTime.now() + Prog.maxEndingAnimationDuration/100
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                // Your code with delay
+                self.recursiveUpdate(to: target, completion: completion)
+            }
+        } else {
+            completion()
+        }
+    }    
 }

@@ -40,8 +40,6 @@ class BarProgressorView: ProgressorView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         if type == .proportional {
-//            var y: CGFloat = 0 + barHeight/2
-//            if side == .bottom { y = rect.maxY - barHeight/2 }
             let path = UIBezierPath()
             path.move(to: CGPoint(x: 0, y: barY))
             path.addLine(to: CGPoint(x: rect.maxX * progress, y: barY))
@@ -90,7 +88,7 @@ class BarProgressorView: ProgressorView {
     }
     
     
-    func animate(from: CGFloat, to: CGFloat, completion: @escaping ()->Void) {
+    private func animate(from: CGFloat, to: CGFloat, completion: @escaping ()->Void) {
         // remove old shape layer if any
         self.shapeLayer?.removeFromSuperlayer()
         let shapeLayer = CAShapeLayer()
@@ -115,7 +113,7 @@ class BarProgressorView: ProgressorView {
         let animation_2 = CABasicAnimation(keyPath: "strokeEnd")
         animation_2.fromValue = from
         animation_2.toValue = to
-        animation_2.duration = Double(to - from) * 0.5
+        animation_2.duration = Double(to - from) * Prog.maxEndingAnimationDuration
         animation_2.repeatCount = 1
         animation_2.isRemovedOnCompletion = false
         animation_2.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)

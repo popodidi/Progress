@@ -84,7 +84,7 @@ class RingProgressorView: ProgressorView {
         isAnimating = true
     }
     
-    func animate(from: CGFloat, to: CGFloat, completion: @escaping ()->Void) {
+    private func animate(from: CGFloat, to: CGFloat, completion: @escaping ()->Void) {
         // remove old shape layer if any
         self.shapeLayer?.removeFromSuperlayer()
         let shapeLayer = CAShapeLayer()
@@ -113,7 +113,7 @@ class RingProgressorView: ProgressorView {
         let animation_2 = CABasicAnimation(keyPath: "strokeEnd")
         animation_2.fromValue = 0
         animation_2.toValue = 1
-        animation_2.duration = 0.4 * Double(to-from)
+        animation_2.duration = Prog.maxEndingAnimationDuration * Double(to-from)
         animation_2.repeatCount = 1
         animation_2.isRemovedOnCompletion = false
         animation_2.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
