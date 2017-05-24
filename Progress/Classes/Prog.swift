@@ -16,10 +16,11 @@ public final class Prog {
     static var shared: Prog = Prog()
     private init() {}
     internal var progressParents: [ProgressParent] = []
-    internal var progressorViews: [[ProgressorView]] = []
+    internal var progressors: [[Progressor]] = []
     
     // MARK: - Progressors
-    var builtInProgressorViewTypes: [String: ProgressorView.Type] = [
+    var builtInProgressorTypes: [String: Progressor.Type] = [
+        "sync": ProgressorCollection.self,
         "color": ColorProgressorView.self,
         "blur": BlurProgressorView.self,
         "activityIndicator": ActivityIndicatorProgressorView.self,
@@ -27,7 +28,7 @@ public final class Prog {
         "ring": RingProgressorView.self,
         "label": LabelProgressorView.self
     ]
-    var customeProgressorViewTypes: [String: ProgressorView.Type] = [:]
+    var customeProgressorTypes: [String: Progressor.Type] = [:]
     
     // MARK: - Data
     /**
@@ -44,20 +45,20 @@ public final class Prog {
      
      - parameter parent: ProgressParent
      */
-    public static func progressorViews(of parent: ProgressParent) -> [ProgressorView] {
+    public static func progressors(of parent: ProgressParent) -> [Progressor] {
         guard let index = shared.progressParents.index(where: {$0 === parent}),
-            index < shared.progressorViews.count else { return [] }
-        return shared.progressorViews[index]
+            index < shared.progressors.count else { return [] }
+        return shared.progressors[index]
     }
     
     /**
      Register custom progressor view with identifier
      
-     - parameter progressorViewType: progressor view type
+     - parameter progressorType: progressor view type
      - parameter identifier: unique identifier for each progressor type
      */
-    public static func register(progressorView progressorViewType: ProgressorView.Type, withIdentifier identifier: String) {
-        shared.customeProgressorViewTypes[identifier] = progressorViewType
+    public static func register(progressor progressorType: Progressor.Type, withIdentifier identifier: String) {
+        shared.customeProgressorTypes[identifier] = progressorType
     }
     
     // MARK: - START
@@ -85,7 +86,7 @@ public final class Prog {
             return
         }
         shared.progressParents.append(parent)
-        shared.progressorViews.append([])
+        shared.progressors.append([])
         
         recursiveStart(in: parent, remainingTypes: types) {
             completion()
@@ -106,13 +107,13 @@ public final class Prog {
     
     static func start(in parent: ProgressParent, type: ProgressorType, completion: @escaping (()->Void)) {
         guard let index = shared.progressParents.index(where: {$0 === parent}),
-            index < shared.progressorViews.count else { return }
+            index < shared.progressors.count else { return }
         
-        let progressorView = shared.progressView(with: type)
-        shared.progressorViews[index].append(progressorView)
-        progressorView.prepareForProgress(parameter: type.parameter)
-        parent.add(progressorView: progressorView) {
-            progressorView.startProgress(parameter: type.parameter, completion: completion)
+        let progressor = shared.progressor(with: type)
+        shared.progressors[index].append(progressor)
+        progressor.prepareForProgress(parameter: type.parameter)
+        parent.add(progressorViews: progressor.views) {
+            progressor.startProgress(parameter: type.parameter, completion: completion)
         }
         
     }
@@ -130,8 +131,8 @@ public final class Prog {
             return
         }
         
-        for progressorView in progressorViews(of: parent) {
-            progressorView.update(progress: progress)
+        for progressor in progressors(of: parent) {
+            progressor.update(progress: progress)
         }
     }
     
@@ -143,22 +144,22 @@ public final class Prog {
      - parameter completion: callback function after all the ending animation
      */
     public static func end(in parent: ProgressParent, completion: @escaping (()->Void) = {}) {
-        recursiveEnd(in: parent, remainingProgressorViews: progressorViews(of: parent).reversed()) { 
+        recursiveEnd(in: parent, remainingProgressors: progressors(of: parent).reversed()) { 
             if let index = shared.progressParents.index(where: { $0 === parent}) {
                 shared.progressParents.remove(at: index)
-                shared.progressorViews.remove(at: index)
+                shared.progressors.remove(at: index)
             }
             completion()
         }
     }
     
-    static func recursiveEnd(in parent: ProgressParent, remainingProgressorViews: [ProgressorView], completion: @escaping (()->Void)) {
-        if let progressorView = remainingProgressorViews.first {
-            progressorView.endProgress() {
-                parent.remove(progressorView: progressorView) {
-                    var remain = remainingProgressorViews
+    static func recursiveEnd(in parent: ProgressParent, remainingProgressors: [Progressor], completion: @escaping (()->Void)) {
+        if let progressor = remainingProgressors.first {
+            progressor.endProgress() {
+                parent.remove(progressorViews: progressor.views) {
+                    var remain = remainingProgressors
                     remain.remove(at: 0)
-                    recursiveEnd(in: parent, remainingProgressorViews: remain, completion: completion)
+                    recursiveEnd(in: parent, remainingProgressors: remain, completion: completion)
                 }
             }
         } else {

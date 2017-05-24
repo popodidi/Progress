@@ -12,6 +12,15 @@ import UIKit
  Subclass to have custom progressor.
  */
 open class ProgressorView: UIView, Progressor {
+    
+    public var views: [ProgressorView] { return [self] }
+    public required init(parameter parameters: Any?) {
+        super.init(frame: CGRect.zero)
+    }
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - to be override
     /**
      The func will be executed before added to progress parent.

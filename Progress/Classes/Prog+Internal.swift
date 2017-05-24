@@ -10,25 +10,25 @@ import Foundation
 
 extension Prog {
     // MARK: - private func
-    internal func progressView(with type: ProgressorType) -> ProgressorView {
+    internal func progressor(with type: ProgressorType) -> Progressor {
         switch type {
-        case .custom(let (identifier, _)): return customProgressorView(with: identifier)
-        default: return builtInProgressorView(with: type.identifier)
+        case .custom(let (identifier, param)): return customProgressor(with: identifier, parameter: param)
+        default: return builtInProgressor(with: type.identifier, parameter: type.parameter)
         }
     }
     
-    internal func builtInProgressorView(with identifier: String) -> ProgressorView {
-        guard let progressorView = builtInProgressorViewTypes[identifier]?.init() else {
+    internal func builtInProgressor(with identifier: String, parameter: Any?) -> Progressor {
+        guard let progressor = builtInProgressorTypes[identifier]?.init(parameter: parameter) else {
             fatalError("progressor view with identifier \"\(identifier)\" not fount.")
         }
-        return progressorView
+        return progressor
     }
     
-    internal func customProgressorView(with identifier: String) -> ProgressorView {
-        guard let progressorView = customeProgressorViewTypes[identifier]?.init() else {
+    internal func customProgressor(with identifier: String, parameter: Any?) -> Progressor {
+        guard let progressor = customeProgressorTypes[identifier]?.init(parameter: parameter) else {
             fatalError("progressor view with identifier \"\(identifier)\" not fount.")
         }
-        return progressorView
+        return progressor
     }
     
 }

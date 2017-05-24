@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        Prog.register(progressorView: CustomProgressorView.self, withIdentifier: "custom_example")
+        Prog.register(progressor: CustomProgressorView.self, withIdentifier: "custom_example")
     }
 
 
@@ -49,10 +49,15 @@ class ViewController: UIViewController {
         Prog.start(in: progressParent, .blur(nil), .bar(barParam))
     }
     @IBAction func ringAndLabelProgress() {
-        let ringParam_1: RingProgressorParameter = (.endless, UIColor.black.withAlphaComponent(0.4), 32, 2)
         let ringParam_2: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 30, 2)
         let labelParam: LabelProgressorParameter = (UIFont.boldSystemFont(ofSize: 14), UIColor.black.withAlphaComponent(0.6))
         Prog.start(in: progressParent, .blur(nil), .ring(ringParam_2), .label(labelParam))
+    }
+    @IBAction func asyncProgress() {
+        let barParam: BarProgressorParameter = (.proportional, .bottom, UIColor.black.withAlphaComponent(0.4), 2)
+        let ringParam: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 30, 2)
+        let labelParam: LabelProgressorParameter = (UIFont.boldSystemFont(ofSize: 14), UIColor.black.withAlphaComponent(0.6))
+        Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .bar(barParam), .label(labelParam)]))
     }
     @IBAction func end() {
         Prog.end(in: progressParent)

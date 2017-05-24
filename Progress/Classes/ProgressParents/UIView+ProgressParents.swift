@@ -9,23 +9,31 @@
 import UIKit
 
 extension UIView: ProgressParent {
-    open func add(progressorView: ProgressorView, completion: @escaping (() -> Void)) {
-        addSubview(progressorView)
-        progressorView.frame = bounds
-        progressorView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        progressorView.alpha = 0
+    open func add(progressorViews: [ProgressorView], completion: @escaping (() -> Void)) {
+        progressorViews.forEach {
+            self.addSubview($0)
+            $0.frame = bounds
+            $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            $0.alpha = 0
+        }
         UIView.animate(withDuration: 0.2, animations: {
-            progressorView.alpha = 1
+            progressorViews.forEach {
+                $0.alpha = 1
+            }
         }) { _ in
             completion()
         }
     }
 
-    open func remove(progressorView: ProgressorView, completion: @escaping (() -> Void)) {
+    open func remove(progressorViews: [ProgressorView], completion: @escaping (() -> Void)) {
         UIView.animate(withDuration: 0.2, animations: {
-            progressorView.alpha = 0
+            progressorViews.forEach {
+                $0.alpha = 0
+            }
         }) { _ in
-            progressorView.removeFromSuperview()
+            progressorViews.forEach {
+                $0.removeFromSuperview()
+            }
             completion()
         }
     }
