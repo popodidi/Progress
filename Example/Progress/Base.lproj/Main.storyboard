@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-GA-A8B">
-                                <rect key="frame" x="32" y="118.5" width="311" height="430.5"/>
+                                <rect key="frame" x="32" y="103.5" width="311" height="460.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hJa-tv-Bto">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="147.5"/>
@@ -89,8 +89,15 @@
                                             <action selector="barProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="X6v-Is-Oyf"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBP-Mh-KKf">
+                                        <rect key="frame" x="103.5" y="400.5" width="104" height="30"/>
+                                        <state key="normal" title="blur+ring+label"/>
+                                        <connections>
+                                            <action selector="ringAndLabelProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cvG-eI-kpX"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fw-dw-UAx">
-                                        <rect key="frame" x="140.5" y="400.5" width="30" height="30"/>
+                                        <rect key="frame" x="140.5" y="430.5" width="30" height="30"/>
                                         <state key="normal" title="end"/>
                                         <connections>
                                             <action selector="end" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z8j-kq-SUj"/>

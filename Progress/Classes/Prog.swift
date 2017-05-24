@@ -24,7 +24,8 @@ public final class Prog {
         "blur": BlurProgressorView.self,
         "activityIndicator": ActivityIndicatorProgressorView.self,
         "bar": BarProgressorView.self,
-        "ring": RingProgressorView.self
+        "ring": RingProgressorView.self,
+        "label": LabelProgressorView.self
     ]
     var customeProgressorViewTypes: [String: ProgressorView.Type] = [:]
     

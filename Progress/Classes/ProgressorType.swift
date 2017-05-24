@@ -15,6 +15,7 @@ public enum ProgressorType {
     activityIndicator,
     bar(BarProgressorParameter?),
     ring(RingProgressorParameter?),
+    label(LabelProgressorParameter?),
     custom(identifier: String, parameter: Any?)
     
     var identifier: String {
@@ -24,6 +25,7 @@ public enum ProgressorType {
         case .activityIndicator: return "activityIndicator"
         case .bar: return "bar"
         case .ring: return "ring"
+        case .label: return "label"
         case .custom(let (id, _)): return id
         }
     }
@@ -34,6 +36,7 @@ public enum ProgressorType {
         case .blur(let param): return param
         case .bar(let param): return param
         case .ring(let param): return param
+        case .label(let param): return param
         case .custom(let (_, param)): return param
         default: return nil
         }

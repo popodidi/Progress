@@ -60,8 +60,8 @@ Prog.end(in: imageView) {
 
 As you see, progress can start with multiple progressors in one parent. The progressors will be added and start animation one by one. When ending the progress, the progressors will end animation and be removed reversely.
 
-> - Since `Prog` holds strong reference to all the `ProgressParent` and `ProgressView`, **Always call `Prog.end(in:)` at the end of progress**.
-> - Make sure to `update`/`end` progress after all the animation is done.
+> - Since `Prog` holds strong references to all the `ProgressParent` and `ProgressView`, **Always call `Prog.end(in:)` at the end of progress**.
+> - Make sure to `update`/`end` progress after all the animations are done.
 > 
 > ```swift
 > Prog.start(in: view, .blur(nil)) {
@@ -73,7 +73,7 @@ As you see, progress can start with multiple progressors in one parent. The prog
 
 ## Advanced usage
 
-### `ProgressParent`
+### ProgressParent
 
 Classes that implement `ProgressParent` protocol are able to add/remove `ProgressView`. `UIView` and `UIViewController` conform `ProgressParent` by default.
 
@@ -81,7 +81,7 @@ The default implementation of `UIView` is to add `progressView` as subview with 
 
 ### Custom progressor
 
-#### create custom progressor view
+#### subclass custom progressor view
 
 ```swift
 import Progress

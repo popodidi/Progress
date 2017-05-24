@@ -1,42 +1,36 @@
 //
-//  ProgressorView.swift
+//  Progressor.swift
 //  Pods
 //
-//  Created by Chang, Hao on 19/05/2017.
+//  Created by Chang, Hao on 24/05/2017.
 //
 //
 
-import UIKit
+import Foundation
 
-/**
- Subclass to have custom progressor.
- */
-open class ProgressorView: UIView, Progressor {
-    // MARK: - to be override
+protocol Progressor {
     /**
      The func will be executed before added to progress parent.
      
      - parameter parameter: The parameter passed in `ProgressorType.custom(identifier:parameter:)`
      */
-    open func prepareForProgress(parameter: Any? = nil) {}
+    func prepareForProgress(parameter: Any?)
     
     /**
-     Progress starting animation. 
+     Progress starting animation.
      Always call completion at the end of starting animation
      
      - parameter parameter: The parameter passed in `ProgressorType.custom(identifier:parameter:)`
      - parameter completion: Callback function after starting animation
      */
-    open func startProgress(parameter: Any? = nil, completion: @escaping (() -> Void)) {
-        completion()
-    }
+    func startProgress(parameter: Any?, completion: @escaping (() -> Void))
     
     /**
      Update progress view for progress completion
      
-     - parameter progress: completion percentage (suggested to be ranging from 0 to 1) 
+     - parameter progress: completion percentage (suggested to be ranging from 0 to 1)
      */
-    open func update(progress: Float) {}
+    func update(progress: Float)
     
     /**
      Progress ending animation.
@@ -44,8 +38,5 @@ open class ProgressorView: UIView, Progressor {
      
      - parameter completion: Callback function after ending animation
      */
-    open func endProgress(completion: @escaping (() -> Void)) {
-        completion()
-    }
-
+    func endProgress(completion: @escaping (() -> Void))
 }

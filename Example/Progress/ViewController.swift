@@ -48,6 +48,12 @@ class ViewController: UIViewController {
         let barParam: BarProgressorParameter = (.endless, .bottom, UIColor.red.withAlphaComponent(0.5), 4)
         Prog.start(in: progressParent, .blur(nil), .bar(barParam))
     }
+    @IBAction func ringAndLabelProgress() {
+        let ringParam_1: RingProgressorParameter = (.endless, UIColor.black.withAlphaComponent(0.4), 32, 2)
+        let ringParam_2: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 30, 2)
+        let labelParam: LabelProgressorParameter = (UIFont.boldSystemFont(ofSize: 14), UIColor.black.withAlphaComponent(0.6))
+        Prog.start(in: progressParent, .blur(nil), .ring(ringParam_2), .label(labelParam))
+    }
     @IBAction func end() {
         Prog.end(in: progressParent)
     }
