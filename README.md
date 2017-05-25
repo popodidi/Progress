@@ -48,7 +48,19 @@ Prog.end(in: imageView) {
 	// do something....
 }
 
+// dismiss progress
+Prog.dismiss(in: imageView)
+
+// dismiss progress with call back after animation
+Prog.dismiss(in: imageView) {
+	// do something....
+}
+
 ```
+
+### end vs. dismiss
+
+Calling `Prog.dismiss(in:)` simply removes progressors without ending animations. For example, given a progress with `.label` progressor, `Prog.dismiss(in:)` only fades out the percentage label while `Prog.end(in:)` makes the percentage go to `100%` and then fades out the label.
 
 ### Built-in progressor types
 
@@ -58,7 +70,8 @@ Prog.end(in: imageView) {
 - `.activityIndicator`
 - `.bar(BarProgressorParameter?)`
 - `.ring(RingProgressorParameter?)`
-- `label(LabelProgressorParameter?)`
+- `.label(LabelProgressorParameter?)`
+- `.dismissable`
 
 #### parameters
 
@@ -81,16 +94,19 @@ public let DefaultLabelProgressorParameter: LabelProgressorParameter = (UIFont.s
 
 Progress can start with multiple progressors in one parent.
 
-> - Since `Prog` holds strong references to all the `ProgressParent` and `ProgressView`, **Always call `Prog.end(in:)` at the end of progress**.
-> - Make sure to `update`/`end` progress after all the animations are done.
+> - Since `Prog` holds strong references to all the `ProgressParent` and `ProgressView`, **Always call `Prog.end(in:)`or `Prog.dismiss(in:)` at the end of progress**.
+> - Make sure to `update`/`end`/`dismiss` progress after all the animations are done.
 > 
 > ```swift
 > Prog.start(in: view, .blur(nil)) {
 >   // do something
 >   // ...
 >   Prog.end(in: self.view)
+>   // Prog.dismiss(in: self.view)
 > }
 > ```
+
+
 
 ### Synchronous progressor
 
@@ -103,6 +119,14 @@ let ringParam: RingProgressorParameter = (.proportional, UIColor.black.withAlpha
 let labelParam: LabelProgressorParameter = (UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight), UIColor.black.withAlphaComponent(0.6))
 
 Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .label(labelParam)]))
+```
+
+### Dismissable progressor
+
+Adding `.dismissable` progressor allows user to dismiss progress on single tap.
+
+```swift 
+Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .label(labelParam)]), .dismissable)
 ```
 
 ## Advanced usage
@@ -162,7 +186,7 @@ class CustomProgressorView: ProgressorView {
 ```
 
 > #### Ending animation duration
-> When implementing `endProgress(completion:)` with animation instead of simply call `completion()`. It is suggested to have the animation duration proportional to the remaining progress with the maximum `Prog.maxEndingAnimationDuration`. For example, if the progress is ending from 0.6 (60%), the animation duration should be `(1-0.6)*Prog.maxEndingAnimationDuration`.
+> When implementing `endProgress(completion:)` with animation instead of simply call `completion()`, it is suggested to have the animation duration proportional to the remaining progress with the maximum value as `Prog.maxEndingAnimationDuration`. For example, if the progress is ending from 0.6 (60%), the animation duration should be `(1-0.6)*Prog.maxEndingAnimationDuration`.
 > 
 > The ending animation duration of built-in progressors can be configured by setting `Prog.maxEndingAnimationDuration` as well.
 
