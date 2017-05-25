@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageView_1: UIImageView!
     @IBOutlet weak var imageView_2: UIImageView!
     
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var vcSwitch: UISwitch!
     @IBOutlet weak var imageSwitch: UISwitch!
     
@@ -50,17 +51,24 @@ class ViewController: UIViewController {
     }
     @IBAction func ringAndLabelProgress() {
         let ringParam_2: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 30, 2)
-        let labelParam: LabelProgressorParameter = (UIFont.boldSystemFont(ofSize: 14), UIColor.black.withAlphaComponent(0.6))
+        var labelParam: LabelProgressorParameter = DefaultLabelProgressorParameter
+        labelParam.font = UIFont.boldSystemFont(ofSize: 14)
+        labelParam.color = UIColor.black.withAlphaComponent(0.6)
         Prog.start(in: progressParent, .blur(nil), .ring(ringParam_2), .label(labelParam))
     }
     @IBAction func asyncProgress() {
-        let barParam: BarProgressorParameter = (.proportional, .bottom, UIColor.black.withAlphaComponent(0.4), 2)
-        let ringParam: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 30, 2)
-        let labelParam: LabelProgressorParameter = (UIFont.boldSystemFont(ofSize: 14), UIColor.black.withAlphaComponent(0.6))
-        Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .bar(barParam), .label(labelParam)]))
+        let ringParam: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 40, 1.5)
+        var labelParam: LabelProgressorParameter = DefaultLabelProgressorParameter
+        labelParam.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightLight)
+        labelParam.color = UIColor.black.withAlphaComponent(0.6)
+        Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .label(labelParam)]), .dismissable)
     }
     @IBAction func end() {
         Prog.end(in: progressParent)
+    }
+    
+    @IBAction func dismiss() {
+        Prog.dismiss(in: progressParent)
     }
     
     @IBAction func updateProgress(_ sender: UISlider) {

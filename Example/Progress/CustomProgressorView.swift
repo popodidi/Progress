@@ -31,7 +31,7 @@ class CustomProgressorView: ProgressorView {
     }
     
     override func endProgress(completion: @escaping (() -> Void)) {
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: Prog.maxEndingAnimationDuration, animations: {
             self.label.text = "DONE!"
             self.label.transform = self.label.transform.scaledBy(x: 3, y: 3)
         }) { _ in

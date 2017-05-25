@@ -9,11 +9,12 @@
 import UIKit
 
 public typealias BlurProgressorParameter = UIBlurEffectStyle
+public let DefaultBlurProgressorParameter: BlurProgressorParameter = .light
 
 class BlurProgressorView: ProgressorView {
     override func prepareForProgress(parameter: Any? = nil) {
         
-        var style: BlurProgressorParameter = .light
+        var style: BlurProgressorParameter = DefaultBlurProgressorParameter
         
         if let s = parameter as? BlurProgressorParameter {
             style = s

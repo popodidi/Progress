@@ -17,6 +17,7 @@ public enum ProgressorType {
     bar(BarProgressorParameter?),
     ring(RingProgressorParameter?),
     label(LabelProgressorParameter?),
+    dismissable,
     custom(identifier: String, parameter: Any?)
     
     var identifier: String {
@@ -28,6 +29,7 @@ public enum ProgressorType {
         case .bar: return "bar"
         case .ring: return "ring"
         case .label: return "label"
+        case .dismissable: return "dismissable"
         case .custom(let (id, _)): return id
         }
     }

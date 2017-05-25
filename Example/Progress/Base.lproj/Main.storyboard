@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-GA-A8B">
-                                <rect key="frame" x="32" y="88.5" width="311" height="490.5"/>
+                                <rect key="frame" x="32" y="73.5" width="311" height="520.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hJa-tv-Bto">
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="147.5"/>
@@ -97,8 +97,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLr-CE-ctB">
-                                        <rect key="frame" x="66.5" y="430.5" width="178" height="30"/>
-                                        <state key="normal" title="blur+sync(ring+bar+label)"/>
+                                        <rect key="frame" x="38" y="430.5" width="235" height="30"/>
+                                        <state key="normal" title="blur+sync(ring, label)+dismissable"/>
                                         <connections>
                                             <action selector="asyncProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Lj7-6l-dbQ"/>
                                         </connections>
@@ -108,6 +108,13 @@
                                         <state key="normal" title="end"/>
                                         <connections>
                                             <action selector="end" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z8j-kq-SUj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxj-87-Prs">
+                                        <rect key="frame" x="129.5" y="490.5" width="52" height="30"/>
+                                        <state key="normal" title="dismiss"/>
+                                        <connections>
+                                            <action selector="dismiss" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lfd-AI-C8L"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -142,6 +149,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="button" destination="osc-yF-RMK" id="6cM-7G-08c"/>
                         <outlet property="imageSwitch" destination="MVb-Mf-3P7" id="O4Z-Nb-CET"/>
                         <outlet property="imageView_1" destination="HLV-ET-lhw" id="42e-5c-Tlf"/>
                         <outlet property="imageView_2" destination="fkF-Eo-I4g" id="jb9-sc-6BI"/>

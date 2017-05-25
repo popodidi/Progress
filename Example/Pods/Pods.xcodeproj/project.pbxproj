@@ -64,7 +64,8 @@
 		7A9B25C61ED579B3007B897B /* LabelProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B25C01ED579B3007B897B /* LabelProgressorView.swift */; };
 		7A9B25C71ED579B3007B897B /* RingProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B25C11ED579B3007B897B /* RingProgressorView.swift */; };
 		7A9B25C91ED579D0007B897B /* Progressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B25C81ED579D0007B897B /* Progressor.swift */; };
-		7A9B25CB1ED57EFF007B897B /* ProgressorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B25CA1ED57EFF007B897B /* ProgressorCollection.swift */; };
+		7A9B25CD1ED662A2007B897B /* ProgressorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B25CC1ED662A2007B897B /* ProgressorCollection.swift */; };
+		7A9B25CF1ED66FCD007B897B /* DismissableProgressorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9B25CE1ED66FCD007B897B /* DismissableProgressorView.swift */; };
 		7ABCF5521ED148D7005FAFC9 /* Prog+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF5511ED148D7005FAFC9 /* Prog+Internal.swift */; };
 		7ABCF5541ED1491F005FAFC9 /* ProgressorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF5531ED1491F005FAFC9 /* ProgressorType.swift */; };
 		7ABCF55C1ED26168005FAFC9 /* UIViewController+ProgressParents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCF55B1ED26168005FAFC9 /* UIViewController+ProgressParents.swift */; };
@@ -232,7 +233,8 @@
 		7A9B25C01ED579B3007B897B /* LabelProgressorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelProgressorView.swift; sourceTree = "<group>"; };
 		7A9B25C11ED579B3007B897B /* RingProgressorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingProgressorView.swift; sourceTree = "<group>"; };
 		7A9B25C81ED579D0007B897B /* Progressor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Progressor.swift; sourceTree = "<group>"; };
-		7A9B25CA1ED57EFF007B897B /* ProgressorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressorCollection.swift; sourceTree = "<group>"; };
+		7A9B25CC1ED662A2007B897B /* ProgressorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressorCollection.swift; sourceTree = "<group>"; };
+		7A9B25CE1ED66FCD007B897B /* DismissableProgressorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableProgressorView.swift; sourceTree = "<group>"; };
 		7AA367A34E0B8C1B01749CCC12FD43C5 /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		7ABCF5511ED148D7005FAFC9 /* Prog+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prog+Internal.swift"; sourceTree = "<group>"; };
 		7ABCF5531ED1491F005FAFC9 /* ProgressorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressorType.swift; sourceTree = "<group>"; };
@@ -460,17 +462,19 @@
 			path = ProgressParents;
 			sourceTree = "<group>";
 		};
-		7A81CBEC1ED03383007DD76E /* ProgressorViews */ = {
+		7A81CBEC1ED03383007DD76E /* Progressors */ = {
 			isa = PBXGroup;
 			children = (
+				7A9B25CC1ED662A2007B897B /* ProgressorCollection.swift */,
 				7A9B25BC1ED579B3007B897B /* ActivityIndicatorProgressorView.swift */,
 				7A9B25BD1ED579B3007B897B /* BarProgressorView.swift */,
 				7A9B25BE1ED579B3007B897B /* BlurProgressorView.swift */,
 				7A9B25BF1ED579B3007B897B /* ColorProgressorView.swift */,
 				7A9B25C01ED579B3007B897B /* LabelProgressorView.swift */,
 				7A9B25C11ED579B3007B897B /* RingProgressorView.swift */,
+				7A9B25CE1ED66FCD007B897B /* DismissableProgressorView.swift */,
 			);
-			path = ProgressorViews;
+			path = Progressors;
 			sourceTree = "<group>";
 		};
 		7BE34EE7067F7CC8A54539A282682749 /* iOS */ = {
@@ -585,7 +589,7 @@
 		8EAE01E49EC0F0D5D47764D940A93205 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7A81CBEC1ED03383007DD76E /* ProgressorViews */,
+				7A81CBEC1ED03383007DD76E /* Progressors */,
 				7A81CBE91ED030A4007DD76E /* ProgressParents */,
 				7ABCF5531ED1491F005FAFC9 /* ProgressorType.swift */,
 				7A81CBE31ECF3333007DD76E /* Prog.swift */,
@@ -593,7 +597,6 @@
 				7A81CBE51ECF333D007DD76E /* ProgressParent.swift */,
 				7A9B25C81ED579D0007B897B /* Progressor.swift */,
 				7A81CBE71ECF3346007DD76E /* ProgressorView.swift */,
-				7A9B25CA1ED57EFF007B897B /* ProgressorCollection.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -931,8 +934,9 @@
 				7A81CBEB1ED030C4007DD76E /* UIView+ProgressParents.swift in Sources */,
 				7A9B25C71ED579B3007B897B /* RingProgressorView.swift in Sources */,
 				7A9B25C41ED579B3007B897B /* BlurProgressorView.swift in Sources */,
+				7A9B25CF1ED66FCD007B897B /* DismissableProgressorView.swift in Sources */,
 				7A9B25C21ED579B3007B897B /* ActivityIndicatorProgressorView.swift in Sources */,
-				7A9B25CB1ED57EFF007B897B /* ProgressorCollection.swift in Sources */,
+				7A9B25CD1ED662A2007B897B /* ProgressorCollection.swift in Sources */,
 				7A9B25C91ED579D0007B897B /* Progressor.swift in Sources */,
 				7ABCF5541ED1491F005FAFC9 /* ProgressorType.swift in Sources */,
 				7A9B25C61ED579B3007B897B /* LabelProgressorView.swift in Sources */,

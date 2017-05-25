@@ -14,4 +14,9 @@ import Foundation
 public protocol ProgressParent: class {
     func add(progressorViews: [ProgressorView], completion: @escaping (() -> Void))
     func remove(progressorViews: [ProgressorView], completion: @escaping (() -> Void))
+    
+    var progressParentUserInteractionEnabled: Bool { set get }
+    func add(progressGestureRecognizer gestureRecognizer: UIGestureRecognizer)
+    func remove(progressGestureRecognizer gestureRecognizer: UIGestureRecognizer)
+    
 }

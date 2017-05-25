@@ -8,9 +8,13 @@
 
 import UIKit
 
-public typealias LabelProgressorParameter = (font: UIFont, color: UIColor)
+public typealias LabelProgressorParameter = (font: UIFont, color: UIColor, stringify: (Float)->String)
 
-public let DefaultLabelProgressorParameter: LabelProgressorParameter = (UIFont.systemFont(ofSize: 14), .black)
+public let DefaultLabelProgressorParameter: LabelProgressorParameter = (UIFont.systemFont(ofSize: 14), .black, { progress -> String in
+    let percent = Int(floor(progress*100))
+    return "\(percent)%"
+    
+})
 
 class LabelProgressorView: ProgressorView {
     lazy var label: UILabel = UILabel()
@@ -30,7 +34,6 @@ class LabelProgressorView: ProgressorView {
     
     override func prepareForProgress(parameter: Any?) {
         addSubview(label)
-        label.text = "0%"
         backgroundColor = .clear
         var param: LabelProgressorParameter = DefaultLabelProgressorParameter
         if let p = parameter as? LabelProgressorParameter {
@@ -41,6 +44,7 @@ class LabelProgressorView: ProgressorView {
         }
         label.font = param.font
         label.textColor = param.color
+        progress = 0
     }
     
     override func update(progress: Float) {
@@ -61,11 +65,10 @@ class LabelProgressorView: ProgressorView {
             progress = progress + 0.01
             let when = DispatchTime.now() + Prog.maxEndingAnimationDuration/100
             DispatchQueue.main.asyncAfter(deadline: when) {
-                // Your code with delay
                 self.recursiveUpdate(to: target, completion: completion)
             }
         } else {
             completion()
         }
-    }    
+    }
 }

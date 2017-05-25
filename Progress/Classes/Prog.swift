@@ -21,6 +21,7 @@ public final class Prog {
     internal var progressParents: [ProgressParent] = []
     internal var progressors: [[Progressor]] = []
     internal var maxEndingAnimationDuration: TimeInterval = 0.4
+    internal var fadingDuration: TimeInterval = 0.2
     
     // MARK: - Progressors
     var builtInProgressorTypes: [String: Progressor.Type] = [
@@ -30,7 +31,8 @@ public final class Prog {
         "activityIndicator": ActivityIndicatorProgressorView.self,
         "bar": BarProgressorView.self,
         "ring": RingProgressorView.self,
-        "label": LabelProgressorView.self
+        "label": LabelProgressorView.self,
+        "dismissable": DismissableProgressorView.self
     ]
     var customeProgressorTypes: [String: Progressor.Type] = [:]
     
@@ -38,6 +40,11 @@ public final class Prog {
     public static var maxEndingAnimationDuration: TimeInterval {
         set { shared.maxEndingAnimationDuration = newValue }
         get { return shared.maxEndingAnimationDuration }
+    }
+    
+    public static var fadingDuration: TimeInterval {
+        set { shared.fadingDuration = newValue }
+        get { return shared.fadingDuration }
     }
     
     // MARK: - Data func
@@ -69,6 +76,17 @@ public final class Prog {
      */
     public static func register(progressor progressorType: Progressor.Type, withIdentifier identifier: String) {
         shared.customeProgressorTypes[identifier] = progressorType
+    }
+    
+    /**
+     Register custom progressor view with identifier
+     
+     - parameter progressorType: progressor view type
+     - parameter identifier: unique identifier for each progressor type
+     */
+    @available(*,deprecated, message: "use Prog.register(progresssor:withIdentifier:) instead")
+    public static func register(progressorView progressorViewType: ProgressorView.Type, withIdentifier identifier: String) {
+        register(progressor: progressorViewType, withIdentifier: identifier)
     }
     
     // MARK: - START
@@ -119,10 +137,10 @@ public final class Prog {
         guard let index = shared.progressParents.index(where: {$0 === parent}),
             index < shared.progressors.count else { return }
         
-        let progressor = shared.progressor(with: type)
+        let progressor = shared.progressor(with: type, parent: parent)
         shared.progressors[index].append(progressor)
         progressor.prepareForProgress(parameter: type.parameter)
-        parent.add(progressorViews: progressor.views) {
+        parent.add(progressorViews: progressor.progressViews) {
             progressor.startProgress(parameter: type.parameter, completion: completion)
         }
         
@@ -166,7 +184,7 @@ public final class Prog {
     static func recursiveEnd(in parent: ProgressParent, remainingProgressors: [Progressor], completion: @escaping (()->Void)) {
         if let progressor = remainingProgressors.first {
             progressor.endProgress() {
-                parent.remove(progressorViews: progressor.views) {
+                parent.remove(progressorViews: progressor.progressViews) {
                     var remain = remainingProgressors
                     remain.remove(at: 0)
                     recursiveEnd(in: parent, remainingProgressors: remain, completion: completion)
@@ -177,4 +195,32 @@ public final class Prog {
         }
     }
     
+    // MARK: - DISMISS
+    /**
+     Dismiss progress in progress parent
+     
+     - parameter parent: progress parent to end progress
+     - parameter completion: callback function after all the ending animation
+     */
+    public static func dismiss(in parent: ProgressParent, completion: @escaping (()->Void) = {}) {
+        recursiveDismiss(in: parent, remainingProgressors: progressors(of: parent).reversed()) {
+            if let index = shared.progressParents.index(where: { $0 === parent}) {
+                shared.progressParents.remove(at: index)
+                shared.progressors.remove(at: index)
+            }
+            completion()
+        }
+    }
+    
+    static func recursiveDismiss(in parent: ProgressParent, remainingProgressors: [Progressor], completion: @escaping (()->Void)) {
+        if let progressor = remainingProgressors.first {
+            parent.remove(progressorViews: progressor.progressViews) {
+                var remain = remainingProgressors
+                remain.remove(at: 0)
+                recursiveDismiss(in: parent, remainingProgressors: remain, completion: completion)
+            }
+        } else {
+            completion()
+        }
+    }
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 public protocol Progressor {
-    var views: [ProgressorView] { get }
-    init(parameter: Any?)
+    var progressViews: [ProgressorView] { get }
+    init(parameter: Any?, parent: ProgressParent)
     /**
      The func will be executed before added to progress parent.
      

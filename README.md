@@ -52,13 +52,34 @@ Prog.end(in: imageView) {
 
 ### Built-in progressor types
 
+- `.sync([ProgressorType])`
 - `.color(ColorProgressorParameter?)`
 - `.blur(BlurProgressorParameter?)`
 - `.activityIndicator`
 - `.bar(BarProgressorParameter?)`
 - `.ring(RingProgressorParameter?)`
+- `label(LabelProgressorParameter?)`
 
-As you see, progress can start with multiple progressors in one parent. The progressors will be added and start animation one by one. When ending the progress, the progressors will end animation and be removed reversely.
+#### parameters
+
+```swift
+public typealias ColorProgressorParameter = UIColor
+public let DefaultColorProgressorParameter: ColorProgressorParameter = UIColor.white.withAlphaComponent(0.5)
+
+public typealias BlurProgressorParameter = UIBlurEffectStyle
+public let DefaultBlurProgressorParameter: BlurProgressorParameter = .light
+
+public typealias BarProgressorParameter = (type: BarProgressorType, side: BarProgressorSide, barColor: UIColor, barHeight: CGFloat)
+public let DefaultBarProgressorParameter: BarProgressorParameter = (.proportional, .top, UIColor.black.withAlphaComponent(0.5), 2)
+
+public typealias RingProgressorParameter = (type: RingProgressType, color: UIColor, radius: CGFloat,  lineWidth: CGFloat)
+public let DefaultRingProgressorParameter: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.5), 12, 4)
+
+public typealias LabelProgressorParameter = (font: UIFont, color: UIColor)
+public let DefaultLabelProgressorParameter: LabelProgressorParameter = (UIFont.systemFont(ofSize: 14), .black)
+```
+
+Progress can start with multiple progressors in one parent.
 
 > - Since `Prog` holds strong references to all the `ProgressParent` and `ProgressView`, **Always call `Prog.end(in:)` at the end of progress**.
 > - Make sure to `update`/`end` progress after all the animations are done.
@@ -71,6 +92,19 @@ As you see, progress can start with multiple progressors in one parent. The prog
 > }
 > ```
 
+### Synchronous progressor
+
+By default, the progressors will be added and start animation one by one. When ending the progress, the progressors will end animation and be removed in reverse order. The starting and ending animations are executed one after another, i.e asynchronously. 
+
+To have a synchronous progress animation, i.e. to execute animations of progressors at the same time, simply wrap the progressorTypes in `.sync` progressorType
+
+```swift
+let ringParam: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 40, 1.5)
+let labelParam: LabelProgressorParameter = (UIFont.systemFont(ofSize: 20, weight: UIFontWeightLight), UIColor.black.withAlphaComponent(0.6))
+
+Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .label(labelParam)]))
+```
+
 ## Advanced usage
 
 ### ProgressParent
@@ -78,6 +112,8 @@ As you see, progress can start with multiple progressors in one parent. The prog
 Classes that implement `ProgressParent` protocol are able to add/remove `ProgressView`. `UIView` and `UIViewController` conform `ProgressParent` by default.
 
 The default implementation of `UIView` is to add `progressView` as subview with 0.2 second fade-in animation. `UIViewController` simply calls `self.view` implementations.
+
+Fading duration can be configured by setting `Prog.fadingDuration`.
 
 ### Custom progressor
 
@@ -125,10 +161,15 @@ class CustomProgressorView: ProgressorView {
 }
 ```
 
+> #### Ending animation duration
+> When implementing `endProgress(completion:)` with animation instead of simply call `completion()`. It is suggested to have the animation duration proportional to the remaining progress with the maximum `Prog.maxEndingAnimationDuration`. For example, if the progress is ending from 0.6 (60%), the animation duration should be `(1-0.6)*Prog.maxEndingAnimationDuration`.
+> 
+> The ending animation duration of built-in progressors can be configured by setting `Prog.maxEndingAnimationDuration` as well.
+
 #### register custom progressor view
 
 ``` swift
-Prog.register(progressorView: CustomProgressorView.self, withIdentifier: "custom_example")
+Prog.register(progressor: CustomProgressorView.self, withIdentifier: "custom_example")
 ```
 
 #### use as built-in ones

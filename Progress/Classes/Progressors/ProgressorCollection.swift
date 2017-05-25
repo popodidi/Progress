@@ -13,16 +13,16 @@ struct ProgressorCollection {
 }
 
 extension ProgressorCollection: Progressor {
-    var views: [ProgressorView] {
-        return progressors.map { $0.views }.flatMap { $0 }
+    var progressViews: [ProgressorView] {
+        return progressors.map { $0.progressViews }.flatMap { $0 }
     }
     
-    init(parameter: Any?) {
+    init(parameter: Any?, parent: ProgressParent) {
         guard let progressorTypes = parameter as? [ProgressorType] else {
             fatalError(".async progressor parameter must be [Progressor].")
         }
         let progressors = progressorTypes.map {
-            return Prog.shared.progressor(with: $0)
+            return Prog.shared.progressor(with: $0, parent: parent)
         }
         self.init(progressors: progressors)
     }

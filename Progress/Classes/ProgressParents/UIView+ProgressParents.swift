@@ -16,7 +16,7 @@ extension UIView: ProgressParent {
             $0.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             $0.alpha = 0
         }
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: Prog.fadingDuration, animations: {
             progressorViews.forEach {
                 $0.alpha = 1
             }
@@ -26,7 +26,7 @@ extension UIView: ProgressParent {
     }
 
     open func remove(progressorViews: [ProgressorView], completion: @escaping (() -> Void)) {
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.animate(withDuration: Prog.fadingDuration, animations: {
             progressorViews.forEach {
                 $0.alpha = 0
             }
@@ -36,5 +36,18 @@ extension UIView: ProgressParent {
             }
             completion()
         }
+    }
+    
+    open var progressParentUserInteractionEnabled: Bool {
+        set { isUserInteractionEnabled = newValue }
+        get { return isUserInteractionEnabled }
+    }
+    
+    open func add(progressGestureRecognizer gestureRecognizer: UIGestureRecognizer) {
+        addGestureRecognizer(gestureRecognizer)
+    }
+    
+    open func remove(progressGestureRecognizer gestureRecognizer: UIGestureRecognizer) {
+        removeGestureRecognizer(gestureRecognizer)
     }
 }

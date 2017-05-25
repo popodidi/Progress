@@ -10,10 +10,12 @@ import UIKit
 
 public typealias ColorProgressorParameter = UIColor
 
+public let DefaultColorProgressorParameter: ColorProgressorParameter = UIColor.white.withAlphaComponent(0.5)
+
 class ColorProgressorView: ProgressorView {
     override func prepareForProgress(parameter: Any? = nil) {
         
-        var param: ColorProgressorParameter = UIColor.white.withAlphaComponent(0.5)
+        var param: ColorProgressorParameter = DefaultColorProgressorParameter
         if let p = parameter as? ColorProgressorParameter {
             param = p
         } else {
