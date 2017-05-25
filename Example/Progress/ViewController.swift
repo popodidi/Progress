@@ -41,10 +41,6 @@ class ViewController: UIViewController {
     @IBAction func customProgress() {
         Prog.start(in: progressParent, .color(UIColor.cyan.withAlphaComponent(0.5)), .custom(identifier: "custom_example", parameter: nil))
     }
-    @IBAction func ringAndCustomProgress() {
-        let ringParam: RingProgressorParameter = (.endless, UIColor.brown.withAlphaComponent(0.5), 20, 5)
-        Prog.start(in: progressParent, .color(nil), .ring(ringParam), .custom(identifier: "custom_example", parameter: nil))
-    }
     @IBAction func barProgress() {
         let barParam: BarProgressorParameter = (.endless, .bottom, UIColor.red.withAlphaComponent(0.5), 4)
         Prog.start(in: progressParent, .blur(nil), .bar(barParam))
@@ -56,12 +52,18 @@ class ViewController: UIViewController {
         labelParam.color = UIColor.black.withAlphaComponent(0.6)
         Prog.start(in: progressParent, .blur(nil), .ring(ringParam_2), .label(labelParam))
     }
-    @IBAction func asyncProgress() {
+    @IBAction func syncProgress() {
         let ringParam: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 40, 1.5)
         var labelParam: LabelProgressorParameter = DefaultLabelProgressorParameter
         labelParam.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightLight)
         labelParam.color = UIColor.black.withAlphaComponent(0.6)
         Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .label(labelParam)]), .dismissable)
+    }
+    @IBAction func screenProgress() {
+        guard let window = UIApplication.shared.keyWindow else {
+            return
+        }
+        Prog.start(in: window, .blur(.dark), .activityIndicator, .dismissable)
     }
     @IBAction func end() {
         Prog.end(in: progressParent)

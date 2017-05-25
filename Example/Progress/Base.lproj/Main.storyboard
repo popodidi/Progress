@@ -23,10 +23,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AoE-GA-A8B">
-                                <rect key="frame" x="32" y="73.5" width="311" height="520.5"/>
+                                <rect key="frame" x="4.5" y="73.5" width="366" height="520.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hJa-tv-Bto">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="147.5"/>
+                                        <rect key="frame" x="27.5" y="0.0" width="311" height="147.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lake-696098_1280" translatesAutoresizingMaskIntoConstraints="NO" id="HLV-ET-lhw">
                                                 <rect key="frame" x="0.0" y="0.0" width="147.5" height="147.5"/>
@@ -46,72 +46,72 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Progress Demo " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCC-Cb-ba8">
-                                        <rect key="frame" x="87" y="147.5" width="137.5" height="72"/>
+                                        <rect key="frame" x="114.5" y="147.5" width="137.5" height="72"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MVb-Mf-3P7">
-                                        <rect key="frame" x="131" y="219.5" width="51" height="31"/>
+                                        <rect key="frame" x="158.5" y="219.5" width="51" height="31"/>
                                     </switch>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnc-vZ-nFz">
-                                        <rect key="frame" x="66" y="250.5" width="179" height="30"/>
+                                        <rect key="frame" x="93.5" y="250.5" width="179" height="30"/>
                                         <state key="normal" title="blur.dark+activityIndicator"/>
                                         <connections>
                                             <action selector="activityIndicatorProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="D6k-ey-0re"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EgF-dt-6jt">
-                                        <rect key="frame" x="44" y="280.5" width="223" height="30"/>
+                                        <rect key="frame" x="71.5" y="280.5" width="223" height="30"/>
                                         <state key="normal" title="blur.extraLight+ring.proportional"/>
                                         <connections>
                                             <action selector="ringProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j9P-eJ-VN3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osc-yF-RMK">
-                                        <rect key="frame" x="108" y="310.5" width="95" height="30"/>
+                                        <rect key="frame" x="135.5" y="310.5" width="95" height="30"/>
                                         <state key="normal" title="color+custom"/>
                                         <connections>
                                             <action selector="customProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bvo-ar-m7I"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPT-Aa-Rdh">
-                                        <rect key="frame" x="62" y="340.5" width="187" height="30"/>
-                                        <state key="normal" title="color+ring.endless+custom"/>
-                                        <connections>
-                                            <action selector="ringAndCustomProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="CgJ-ja-sFg"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQM-zX-g8Y">
-                                        <rect key="frame" x="81.5" y="370.5" width="148" height="30"/>
+                                        <rect key="frame" x="109" y="340.5" width="148" height="30"/>
                                         <state key="normal" title="blur.light+bar.endless"/>
                                         <connections>
                                             <action selector="barProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="X6v-Is-Oyf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBP-Mh-KKf">
-                                        <rect key="frame" x="103.5" y="400.5" width="104" height="30"/>
+                                        <rect key="frame" x="131" y="370.5" width="104" height="30"/>
                                         <state key="normal" title="blur+ring+label"/>
                                         <connections>
                                             <action selector="ringAndLabelProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cvG-eI-kpX"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLr-CE-ctB">
-                                        <rect key="frame" x="38" y="430.5" width="235" height="30"/>
+                                        <rect key="frame" x="65.5" y="400.5" width="235" height="30"/>
                                         <state key="normal" title="blur+sync(ring, label)+dismissable"/>
                                         <connections>
-                                            <action selector="asyncProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Lj7-6l-dbQ"/>
+                                            <action selector="syncProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="GPr-b5-xPb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9mu-Hr-fiU">
+                                        <rect key="frame" x="0.0" y="430.5" width="366" height="30"/>
+                                        <state key="normal" title="blur.dark+activityIndicator+dismissable in keyWindow"/>
+                                        <connections>
+                                            <action selector="screenProgress" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cIx-1v-8sw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fw-dw-UAx">
-                                        <rect key="frame" x="140.5" y="460.5" width="30" height="30"/>
+                                        <rect key="frame" x="168" y="460.5" width="30" height="30"/>
                                         <state key="normal" title="end"/>
                                         <connections>
                                             <action selector="end" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z8j-kq-SUj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxj-87-Prs">
-                                        <rect key="frame" x="129.5" y="490.5" width="52" height="30"/>
+                                        <rect key="frame" x="157" y="490.5" width="52" height="30"/>
                                         <state key="normal" title="dismiss"/>
                                         <connections>
                                             <action selector="dismiss" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lfd-AI-C8L"/>
