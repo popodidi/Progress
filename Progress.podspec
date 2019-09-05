@@ -8,8 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Progress'
-  s.version          = '2.3'
+  s.version          = '3.0'
   s.summary          = 'A iOS progress indicator management tool'
+  s.swift_version    = '4.2'
 
   s.description      = <<-DESC
 Apart from any kinds of ProgresHUDs that capture the whole screen and lock the user interaction, Progress provides a more precise and elegant progress indicator. Progress allows you to add any number/kinds of progressor views into each view with only one line of code. The progress indicator can be an arbitrary combination of built-in/custom progressors. Progress helps you provide a fluent user experience in your iOS application.
