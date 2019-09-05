@@ -8,7 +8,7 @@
 
 import UIKit
 
-public typealias BlurProgressorParameter = UIBlurEffectStyle
+public typealias BlurProgressorParameter = UIBlurEffect.Style
 public let DefaultBlurProgressorParameter: BlurProgressorParameter = .light
 
 class BlurProgressorView: ProgressorView {

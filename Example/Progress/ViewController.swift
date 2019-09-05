@@ -55,7 +55,7 @@ class ViewController: UIViewController {
     @IBAction func syncProgress() {
         let ringParam: RingProgressorParameter = (.proportional, UIColor.black.withAlphaComponent(0.4), 40, 1.5)
         var labelParam: LabelProgressorParameter = DefaultLabelProgressorParameter
-        labelParam.font = UIFont.systemFont(ofSize: 17, weight: UIFontWeightLight)
+        labelParam.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.light)
         labelParam.color = UIColor.black.withAlphaComponent(0.6)
         Prog.start(in: progressParent, .blur(nil), .sync([.ring(ringParam), .label(labelParam)]), .dismissable)
     }

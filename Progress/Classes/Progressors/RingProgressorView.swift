@@ -63,7 +63,7 @@ class RingProgressorView: ProgressorView {
         animation_2.repeatCount = Float.infinity
         animation_2.isRemovedOnCompletion = false
         animation_2.autoreverses = true
-        animation_2.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
+        animation_2.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeOut)
         layer_2.add(animation_2, forKey: "strokeEndAnimation")
         
         shapeLayer.addSublayer(layer_2)
@@ -116,7 +116,7 @@ class RingProgressorView: ProgressorView {
         animation_2.duration = Prog.maxEndingAnimationDuration * Double(to-from)
         animation_2.repeatCount = 1
         animation_2.isRemovedOnCompletion = false
-        animation_2.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseOut)
+        animation_2.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeOut)
         layer_2.add(animation_2, forKey: "strokeEndAnimation")
         
         shapeLayer.addSublayer(layer_2)

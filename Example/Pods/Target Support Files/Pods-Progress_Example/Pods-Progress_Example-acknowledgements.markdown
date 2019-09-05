@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## Progress
 
-Copyright (c) 2017 popodidi <changhao@sendbest.cc>
+Copyright (c) 2017 popodidi <changhao@haostudio.cc>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -30,7 +30,7 @@ class DismissableProgressorView: ProgressorView {
         
     }
     
-    func dismissProgress() {
+    @objc func dismissProgress() {
         guard let parent = progressParent,
             let parentUserInteractionEnabled = parentUserInteractionEnabled,
             let dismissGestureRecognizer = dismissGestureRecognizer else { return }
