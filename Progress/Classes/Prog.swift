@@ -22,11 +22,7 @@ public final class Prog {
     internal var progressors: [[Progressor]] = []
     internal var maxEndingAnimationDuration: TimeInterval = 0.4
     internal var fadingDuration: TimeInterval = 0.2
-    internal var competedAnimation = false {
-        didSet {
-            
-        }
-    }
+    internal var competedAnimation = false
     
     // MARK: - Progressors
     var builtInProgressorTypes: [String: Progressor.Type] = [
