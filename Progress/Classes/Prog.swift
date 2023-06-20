@@ -22,6 +22,7 @@ public final class Prog {
     internal var progressors: [[Progressor]] = []
     internal var maxEndingAnimationDuration: TimeInterval = 0.4
     internal var fadingDuration: TimeInterval = 0.2
+    internal var competedAnimation = false
     
     // MARK: - Progressors
     var builtInProgressorTypes: [String: Progressor.Type] = [
@@ -113,6 +114,7 @@ public final class Prog {
             print("\(parent) is already in progress")
             return
         }
+        shared.competedAnimation = false
         shared.progressParents.append(parent)
         shared.progressors.append([])
         
@@ -122,6 +124,11 @@ public final class Prog {
     }
     
     static func recursiveStart(in parent: ProgressParent, remainingTypes: [ProgressorType], completion: @escaping (()->Void)) {
+        if shared.competedAnimation {
+            shared.competedAnimation = true
+            completion()
+        }
+        
         if let type = remainingTypes.first {
             start(in: parent, type: type) {
                 var remain = remainingTypes
@@ -172,13 +179,14 @@ public final class Prog {
      - parameter completion: callback function after all the ending animation
      */
     public static func end(in parent: ProgressParent, completion: @escaping (()->Void) = {}) {
-        recursiveEnd(in: parent, remainingProgressors: progressors(of: parent).reversed()) { 
-            if let index = shared.progressParents.index(where: { $0 === parent}) {
-                shared.progressParents.remove(at: index)
-                shared.progressors.remove(at: index)
+        shared.competedAnimation = true
+            recursiveEnd(in: parent, remainingProgressors: progressors(of: parent).reversed()) {
+                if let index = shared.progressParents.index(where: { $0 === parent}) {
+                    shared.progressParents.remove(at: index)
+                    shared.progressors.remove(at: index)
+                }
+                completion()
             }
-            completion()
-        }
     }
     
     static func recursiveEnd(in parent: ProgressParent, remainingProgressors: [Progressor], completion: @escaping (()->Void)) {
